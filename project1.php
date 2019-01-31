@@ -74,9 +74,33 @@ class Book{
         return $this->info;
     }
 
-    // public function sortByIdDESCSort(){
+    public function sortByIdASCSort(){
+        $temp=0;
+        for($i = 0 ;$i<count($this->info); $i++){
+            for($j = 0 ; $j<count($this->info) - 1;$j++ ){
+                if($this->info[$j]['id'] > $this->info[$j+1]['id']){
+                    $temp = $this->info[$j]['id'];
+                    $this->info[$j]['id'] = $this->info[$j+1]['id'];
+                    $this->info[$j+1]['id'] = $temp;
+                }
+            }
+        }
+        return $this->info;        
+    }
 
-    // }
+    public function sortByIdDESCSort(){
+        $temp=0;
+        for($i = 0 ;$i<count($this->info); $i++){
+            for($j = 0 ; $j<count($this->info) - 1;$j++ ){
+                if($this->info[$j]['id'] < $this->info[$j+1]['id']){
+                    $temp = $this->info[$j]['id'];
+                    $this->info[$j]['id'] = $this->info[$j+1]['id'];
+                    $this->info[$j+1]['id'] = $temp;
+                }
+            }
+        }
+        return $this->info;        
+    }
     
     public function sortByName()
     {
@@ -188,7 +212,8 @@ $book= new Book();
 //$x = $book->getDiscountPrice(83435,10);
 //echo $x;
 //return $book->searchBook(60);
- $a = $book->getDiscount(6810,690);
- echo $a;
+ //$a = $book->getDiscount(6810,690);
+ //echo $a;
+ print_r($book->sortByIdDESCSort());
  ?>
 
